@@ -2,22 +2,17 @@ let fullList = ["Capitán América: El Primer Vengador (2011) - Nota: 80", "Capi
 
 let superArray = [];
 fullList.forEach(cutIt);
-superArray.forEach(eraseRubbish);
 
 function cutIt(item, index, arr) {
     let tempArr = item.split(/[()]/);
+    if (tempArr.length > 3) {
+        tempArr.splice(2, 2)
+    }
+
+    tempArr[0] = tempArr[0].slice(0, tempArr[0].length - 1);
+    tempArr[2] = tempArr[2].slice([3], tempArr[2].length);
+
     superArray.push(tempArr);
 };
 
-function eraseRubbish(item, index, arr) {
-    if (item.length > 3) {
-        item.splice(2, 2)
-    }
-
-    item[0] = item[0].slice(0, item[0].length - 1);
-    item[2] = item[2].slice([3], item[2].length);
-};
-
-console.log("only took 11 lines of code!")
-console.log(superArray.length);
 console.log("super  :" + JSON.stringify(superArray, null, '\t'));
